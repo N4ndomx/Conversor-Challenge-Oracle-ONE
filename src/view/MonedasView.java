@@ -25,19 +25,19 @@ public class MonedasView {
         List<String> listaMonedas = new ArrayList<>(Arrays.asList(monedas));
 
         do {
-            cantidad = ventana.solicitarDato(null, "Cantidad de Dinero que Deseas Convertir ", 1);
+            cantidad = ventana.solicitarDato(null, "Cantidad de Dinero que Deseas Convertir ");
             soloNumeros = ventana.validacionNumerica(cantidad);
             if (soloNumeros) {
-                ventana.mensaje(null, "Solo ingrese números", 1);
+                ventana.mensaje(null, "Solo ingrese números");
             }
         } while (soloNumeros);
 
-        String procedencia = ventana.selector(null, "Moneda de Procedencia", 1, monedas);
+        String procedencia = ventana.selector(null, "Moneda de Procedencia", monedas);
         listaMonedas.remove(procedencia);
-        String convertir = ventana.selector(null, "Moneda a Convertir", 1, listaMonedas.toArray(new String[listaMonedas.size()]));
+        String convertir = ventana.selector(null, "Moneda a Convertir",  listaMonedas.toArray(new String[listaMonedas.size()]));
 
         double resultado = monedasController.getConversion(procedencia, convertir, cantidad);
-        ventana.mensaje(null, "Sus $" + cantidad + " " + procedencia + " son $" + resultado + " " + convertir, 1);
+        ventana.mensaje(null, "Sus $" + cantidad + " " + procedencia + " son $" + resultado + " " + convertir);
     }
 
    

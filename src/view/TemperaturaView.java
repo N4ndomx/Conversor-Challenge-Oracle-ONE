@@ -24,21 +24,21 @@ public class TemperaturaView {
 		List<String> listaEscala = new ArrayList<>(Arrays.asList(escalas));
 		// TODO Auto-generated method stub
 		do {
-			tem = ventana.solicitarDato(null, "Cantidad de Temperatura que Deseas Convertir ", 1);
+			tem = ventana.solicitarDato(null, "Cantidad de Temperatura que Deseas Convertir ");
 			soloNumeros = ventana.validacionNumerica(tem);
 			if (soloNumeros) {
-				ventana.mensaje(null, "Solo ingrese números", 1);
+				ventana.mensaje(null, "Solo ingrese números");
 			}
 
 		} while (soloNumeros);
 
-		String procedencia = ventana.selector(null, "Escala de Procedencia", 1, escalas);
+		String procedencia = ventana.selector(null, "Escala de Procedencia", escalas);
 		listaEscala.remove(procedencia);
-		String convertir = ventana.selector(null, "Escala a Convertir", 1,
+		String convertir = ventana.selector(null, "Escala a Convertir",
 				listaEscala.toArray(new String[listaEscala.size()]));
 
 		double resultado = tempControlador.convertirTemperatura(procedencia, convertir, Double.parseDouble(tem));
-		ventana.mensaje(null, "°" + tem + " " + procedencia + " son °" + resultado + " " + convertir, 1);
+		ventana.mensaje(null, "°" + tem + " " + procedencia + " son °" + resultado + " " + convertir);
 	}
 
 }

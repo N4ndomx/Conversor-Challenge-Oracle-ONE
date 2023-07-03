@@ -12,16 +12,26 @@ public class Ventanas {
 		this.titulo = titulo;
 	}
 
-	public void mensaje(Component parent, String msg, int type) {
-		JOptionPane.showMessageDialog(parent, msg, this.titulo, type);
+	public void mensaje(Component parent, String msg) {
+		JOptionPane.showMessageDialog(parent, msg, this.titulo, JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	public String selector(Component parent, String msg, int type, String[] values) {
-		return (String) JOptionPane.showInputDialog(parent, msg, this.titulo, type, null, values, values[0]);
+	public boolean mensajeConfirmacion(Component parent, String msg) {
+		boolean bandera = false;
+
+		int opcion = JOptionPane.showConfirmDialog(parent, msg, titulo, JOptionPane.YES_NO_CANCEL_OPTION);
+
+		if (JOptionPane.OK_OPTION == opcion)
+			bandera = true;
+		return bandera;
 	}
 
-	public String solicitarDato(Component parent, String msg, int type) {
-		return (String) JOptionPane.showInputDialog(null, msg, this.titulo, type);
+	public String selector(Component parent, String msg, String[] values) {
+		return (String) JOptionPane.showInputDialog(parent, msg, this.titulo, JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
+	}
+
+	public String solicitarDato(Component parent, String msg) {
+		return (String) JOptionPane.showInputDialog(null, msg, this.titulo, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public boolean validacionNumerica(String input) {
@@ -31,13 +41,13 @@ public class Ventanas {
 		} else {
 			for (int i = 0; i < input.length(); i++) {
 				char c = input.charAt(i);
-				if (!Character.isDigit(c) && c != '.'&& c != '-') {
-					resul = true; // Se encontró un carácter no numérico ni punto
+				if (!Character.isDigit(c) && c != '.' && c != '-') {
+					resul = true; // Se encontró un carácter no numérico
 					break;
 				}
 			}
 		}
-		return resul; // El string solo contiene números y/o punto
+		return resul; // El string revisado
 	}
 
 }
