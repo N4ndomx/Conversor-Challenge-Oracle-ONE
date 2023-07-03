@@ -9,17 +9,10 @@ import org.json.JSONObject;
 
 public class APIConnector {
 
-    public static double getExchangeRate(String fromCurrency, String toCurrency, int amount) {
+    public static String getRate(String urlString) {
         String responseString = "";
-
+        
         try {
-            // Construir la URL de la solicitud
-            String urlString = "https://api.frankfurter.app/latest?" +
-                    "&amount=" + amount +
-                    "&from=" + fromCurrency +
-                    "&to=" + toCurrency;
-            System.out.println(urlString);
-
             URL url = new URL(urlString);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -37,9 +30,6 @@ public class APIConnector {
                 
                 // Obtener la respuesta como cadena
                 responseString = response.toString();
-
-                // Manejar la respuesta JSON según tus necesidades
-                // ...
             } else {
                 System.out.println("Error al realizar la solicitud. Código de error: " + responseCode);
             }
@@ -49,16 +39,16 @@ public class APIConnector {
             e.printStackTrace();
         }
 
-        return extractExchangeRate(responseString,toCurrency);
+        return responseString;
     }
     
-    private static double extractExchangeRate(String response,String idconver) {
+    public static double extractRate(String response,String idConver) {
         double exchangeRate = 0.0;
 
         try {
             JSONObject json = new JSONObject(response);
             JSONObject rates = json.getJSONObject("rates");
-            exchangeRate = rates.getDouble(idconver);
+            exchangeRate = rates.getDouble(idConver);
         } catch (Exception e) {
             e.printStackTrace();
         }
