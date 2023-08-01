@@ -1,18 +1,17 @@
 package controllers;
 
-import model.ConversorTemperaturaModel;
+import model.TemperaturaService;
 
 public class TemperaturasController {
-	private ConversorTemperaturaModel temperaturaModel;
+	private TemperaturaService temperaturaService;
 
-	public TemperaturasController(ConversorTemperaturaModel temModel) {
-		this.temperaturaModel = temModel;
+	public TemperaturasController() {
+		temperaturaService = new TemperaturaService();
 	}
 
 	public double convertirTemperatura(String escalaOriginal, String escalaConversion, double temperatura) {
-		temperaturaModel.setEscala(escalaOriginal);
-		temperaturaModel.setTemperatura(temperatura);
-		return temperaturaModel.convertir(escalaConversion);
+		temperaturaService.setConversionBase(escalaOriginal,temperatura);;
+		return temperaturaService.convertir(escalaConversion);
 
 	}
 

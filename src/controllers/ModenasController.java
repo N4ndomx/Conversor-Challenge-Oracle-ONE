@@ -1,17 +1,16 @@
 package controllers;
-import model.ConversorMonedasModel;
+import model.ServiceMonedas;
 
 public class ModenasController {
-	private ConversorMonedasModel modelConversorMonedas;
+	private ServiceMonedas monedasService;
 	
-	 public ModenasController(ConversorMonedasModel inyecConversor) {
-		 this.modelConversorMonedas = inyecConversor;
-	}
+	
 	public ModenasController() {
-		// TODO Auto-generated constructor stub
+		monedasService = new ServiceMonedas();
 	}
 	 public double getConversion(String from ,String to ,String amount) {
-	return	modelConversorMonedas.getConverion(from, to, Double.parseDouble(amount));
+		 
+	return	monedasService.getConverion(from, to, Double.parseDouble(amount));
 
 	}
 	 

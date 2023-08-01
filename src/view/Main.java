@@ -1,7 +1,4 @@
 package view;
-
-import model.ConversorMonedasModel;
-import model.ConversorTemperaturaModel;
 import controllers.ModenasController;
 import controllers.TemperaturasController;
 
@@ -17,7 +14,7 @@ public class Main {
 		boolean bandera = true;
 
 		while (bandera) {
-			ModenasController monedasC = new ModenasController(new ConversorMonedasModel());
+			ModenasController monedasC = new ModenasController();
 			String seleccion = ventana.selector(null, "Seleccione una opcion de Conversor", conversores);
 			switch (seleccion) {
 			case "Conversor de Moneda":
@@ -26,7 +23,7 @@ public class Main {
 				break;
 
 			case "Conversor de Temperatura":
-				TemperaturasController tempC = new TemperaturasController(new ConversorTemperaturaModel());
+				TemperaturasController tempC = new TemperaturasController();
 				TemperaturaView conversorTemperaturaView = new TemperaturaView(tempC, ventana);
 				conversorTemperaturaView.ejecutar();
 

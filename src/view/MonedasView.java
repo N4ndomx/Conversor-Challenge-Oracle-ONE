@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MonedasView {
+public class MonedasView implements InterfazGrafica {
     private ModenasController monedasController;
     private Ventanas ventana;
     private String[] monedas;
@@ -17,7 +17,8 @@ public class MonedasView {
         // Definir las opciones de monedas
         monedas = new String[]{"Pesos Mexicanos", "Dolares Estadounidenses", "Euros", "Real Brasileño", "Won Surcoreano"};
     }
-
+    
+    @Override
     public void ejecutar() {
         String cantidad;
         boolean soloNumeros;
