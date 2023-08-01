@@ -1,6 +1,6 @@
 package model;
 
-public class ConversorMonedasModel {
+public class ServiceMonedas {
 
 	public double getConverion(String from, String to, double amount) {
 		String urlString = "https://api.frankfurter.app/latest?" +

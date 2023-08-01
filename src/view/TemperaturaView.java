@@ -6,7 +6,7 @@ import java.util.List;
 
 import controllers.TemperaturasController;
 
-public class TemperaturaView {
+public class TemperaturaView implements InterfazGrafica{
 	private TemperaturasController tempControlador;
 	private Ventanas ventana;
 	private String[] escalas;
@@ -17,12 +17,12 @@ public class TemperaturaView {
 		this.ventana = ventanas;
 		escalas = new String[] { "Celsius", "Fahrenheit", "Kelvin" };
 	}
-
+	@Override
 	public void ejecutar() {
 		String tem;
 		boolean soloNumeros;
 		List<String> listaEscala = new ArrayList<>(Arrays.asList(escalas));
-		// TODO Auto-generated method stub
+		
 		do {
 			tem = ventana.solicitarDato(null, "Cantidad de Temperatura que Deseas Convertir ");
 			soloNumeros = ventana.validacionNumerica(tem);
@@ -40,5 +40,6 @@ public class TemperaturaView {
 		double resultado = tempControlador.convertirTemperatura(procedencia, convertir, Double.parseDouble(tem));
 		ventana.mensaje(null, "°" + tem + " " + procedencia + " son °" + resultado + " " + convertir);
 	}
+	
 
 }
