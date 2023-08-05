@@ -8,27 +8,24 @@ public class Main {
 		
 		
 		Ventanas ventana = new Ventanas("Conversor");
-
 		String[] conversores = { "Conversor de Moneda", "Conversor de Temperatura" };
+		InterfazGrafica gui = null;
 		
 		boolean bandera = true;
 
 		while (bandera) {
-			ModenasController monedasC = new ModenasController();
 			String seleccion = ventana.selector(null, "Seleccione una opcion de Conversor", conversores);
 			switch (seleccion) {
 			case "Conversor de Moneda":
-				MonedasView conversorMonedaView = new MonedasView(monedasC, ventana);
-				conversorMonedaView.ejecutar();
+				gui = new MonedasView(new ModenasController(), ventana);
 				break;
-
 			case "Conversor de Temperatura":
-				TemperaturasController tempC = new TemperaturasController();
-				TemperaturaView conversorTemperaturaView = new TemperaturaView(tempC, ventana);
-				conversorTemperaturaView.ejecutar();
-
+				gui = new TemperaturaView(new TemperaturasController(), ventana);
 				break;
 			}
+			
+			gui.ejecutar();
+			
 			bandera = ventana.mensajeConfirmacion(null, "¿Desea continuar?");
 		}
 		ventana.mensaje(null, "Programa Finalizado");

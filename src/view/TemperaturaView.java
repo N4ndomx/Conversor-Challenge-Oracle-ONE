@@ -38,7 +38,7 @@ public class TemperaturaView implements InterfazGrafica{
 				listaEscala.toArray(new String[listaEscala.size()]));
 
 		double resultado = tempControlador.convertirTemperatura(procedencia, convertir, Double.parseDouble(tem));
-		ventana.mensaje(null, "°" + tem + " " + procedencia + " son °" + resultado + " " + convertir);
+		ventana.mensaje(null, "°" + String.format("%.2f",Double.parseDouble(tem)) + " " + procedencia + " son °" + String.format("%.2f",resultado) + " " + convertir);
 	}
 	
 

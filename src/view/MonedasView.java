@@ -37,8 +37,8 @@ public class MonedasView implements InterfazGrafica {
         listaMonedas.remove(procedencia);
         String convertir = ventana.selector(null, "Moneda a Convertir",  listaMonedas.toArray(new String[listaMonedas.size()]));
 
-        double resultado = monedasController.getConversion(procedencia, convertir, cantidad);
-        ventana.mensaje(null, "Sus $" + cantidad + " " + procedencia + " son $" + resultado + " " + convertir);
+        double resultado = monedasController.getConversion(procedencia, convertir,Double.parseDouble( cantidad));
+        ventana.mensaje(null, "Sus $" +String.format("%.2f", Double.parseDouble(cantidad)) + " " + procedencia + " son $" + String.format("%.2f",resultado) + " " + convertir);
     }
 
    

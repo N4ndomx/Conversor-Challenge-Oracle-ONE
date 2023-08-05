@@ -8,9 +8,9 @@ public class ModenasController {
 	public ModenasController() {
 		monedasService = new ServiceMonedas();
 	}
-	 public double getConversion(String from ,String to ,String amount) {
+	 public double getConversion(String from ,String to ,double amount) {
 		 
-	return	monedasService.getConverion(from, to, Double.parseDouble(amount));
+	return	monedasService.getConverion(from, to, amount);
 
 	}
 	 
